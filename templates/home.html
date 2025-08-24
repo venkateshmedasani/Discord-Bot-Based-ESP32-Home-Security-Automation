@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        /* Pre-loader animation */
+        .pre-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+            opacity: 1;
+        }
+
+        .loader {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+        }
+
+        .loader div {
+            animation: loaderAnim 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            transform-origin: 40px 40px;
+        }
+
+        .loader div:after {
+            content: " ";
+            display: block;
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #007bff;
+            margin: -4px 0 0 -4px;
+        }
+
+        .loader div:nth-child(1) {
+            animation-delay: -0.036s;
+        }
+
+        .loader div:nth-child(1):after {
+            top: 63px;
+            left: 63px;
+        }
+
+        .loader div:nth-child(2) {
+            animation-delay: -0.072s;
+        }
+
+        .loader div:nth-child(2):after {
+            top: 68px;
+            left: 56px;
+        }
+
+        .loader div:nth-child(3) {
+            animation-delay: -0.108s;
+        }
+
+        .loader div:nth-child(3):after {
+            top: 71px;
+            left: 48px;
+        }
+
+        .loader div:nth-child(4) {
+            animation-delay: -0.144s;
+        }
+
+        .loader div:nth-child(4):after {
+            top: 72px;
+            left: 40px;
+        }
+
+        .loader div:nth-child(5) {
+            animation-delay: -0.18s;
+        }
+
+        .loader div:nth-child(5):after {
+            top: 71px;
+            left: 32px;
+        }
+
+        .loader div:nth-child(6) {
+            animation-delay: -0.216s;
+        }
+
+        .loader div:nth-child(6):after {
+            top: 68px;
+            left: 24px;
+        }
+
+        .loader div:nth-child(7) {
+            animation-delay: -0.252s;
+        }
+
+        .loader div:nth-child(7):after {
+            top: 63px;
+            left: 17px;
+        }
+
+        .loader div:nth-child(8) {
+            animation-delay: -0.288s;
+        }
+
+        .loader div:nth-child(8):after {
+            top: 56px;
+            left: 12px;
+        }
+
+        @keyframes loaderAnim {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Page content */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, rgba(52, 152, 219, 0.95), rgba(46, 204, 113, 0.95));
+            /* Smudged gradient with increased opacity */
+            animation: mainAnimation 10s ease infinite;
+        }
+
+        @keyframes mainAnimation {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            50% {
+                background-position: 60% 50%;
+            }
+
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.5s;
+            opacity: 0;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 10px;
+            margin: 10px 50px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-10px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Pre-loader animation -->
+    <div class="pre-loader">
+        <div class="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- Page content -->
+    <div class="container">
+        <h1>Welcome to SMART Surveillance System</h1>
+        <p>Select an option below:</p>
+        <a href="/live-surveillance" class="btn">Live Surveillance</a>
+        <a href="/recordings" class="btn">View Recordings</a>
+    </div>
+
+    <script>
+        // Remove pre-loader animation after page loads
+        window.addEventListener('load', function () {
+            var preLoader = document.querySelector('.pre-loader');
+            var content = document.querySelector('.container');
+            preLoader.style.opacity = '0';
+            content.style.opacity = '1';
+            setTimeout(() => {
+                preLoader.style.display = 'none';
+            }, 500);
+        });
+    </script>
+</body>
+
+</html>

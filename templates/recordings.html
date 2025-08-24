@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recorded Videos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            border-radius: 25px;
+            background-color: #e0e0e0;
+            margin: 50px;
+            padding: 20px;
+            /* Slightly darker grey background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Subtle drop shadow */
+        }
+
+        .video {
+            width: calc(50% - 20px);
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        .video video {
+            width: 100%;
+            /* Make sure the video fits within its container */
+            height: auto;
+            /* Maintain aspect ratio */
+            display: block;
+        }
+
+        .video-info {
+            text-align: center;
+            margin-top: 10px;
+            /* Add some space between video and video info */
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .home {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Recorded Videos</h1>
+
+    <div class="home">
+        <a href="/" class="btn">Home</a>
+    </div>
+
+
+    <div class="video-container">
+        {% for video in videos %}
+        <div class="video">
+            <p>Date and Time:{{ video['datetime'] }}</p>
+            <video controls>
+                <!-- Set the source of the video tag to the local filepath -->
+                <source src="http://localhost:8000/{{ video['filepath'] }}" type="video/*">
+
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+</body>
+
+</html>
